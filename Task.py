@@ -81,7 +81,7 @@ print(clf2.score(X_tes, y_tes))
 #%%XGBoost
 X_train = np.array(X_train)
 y_train = pd.to_numeric(y_train)
-clf3 = xgboost.XGBClassifier()
+clf3 = xgboost.XGBClassifier(scale_pos_weight=80)
 clf3.fit(X_train, y_train)
 cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
 scores = cross_val_score(clf3, X_train, y_tr, scoring='roc_auc', cv=cv, n_jobs=-1)
